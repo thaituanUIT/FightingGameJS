@@ -448,7 +448,7 @@ const CHARACTERS = [
     name: 'Arthur Pendragon',
     face_right: true,
     scale: 2.5,
-    drawOffset: { x: 175, y: 95 },
+    drawOffset: { x: 175, y: 100 },
     isMelee: true,
     attackHitFrame: 2,
     attackBox: { offset: { x: 100, y: 50 }, width: 160, height: 50 },
@@ -462,14 +462,14 @@ const CHARACTERS = [
       attackFramesHold: 5
     },
     sprites: {
-      idle: { imageSrc: './img/characters/fantasyKnight/character/Idle.png', framesMax: 8 },
-      run: { imageSrc: './img/characters/fantasyKnight/character/Run.png', framesMax: 8 },
-      jump: { imageSrc: './img/characters/fantasyKnight/character/Jump.png', framesMax: 2 },
-      fall: { imageSrc: './img/characters/fantasyKnight/character/Fall.png', framesMax: 2 },
-      attack1: { imageSrc: './img/characters/fantasyKnight/character/Attack1.png', framesMax: 5 },
-      attack2: { imageSrc: './img/characters/fantasyKnight/character/Attack3.png', framesMax: 7 },
-      takeHit: { imageSrc: './img/characters/fantasyKnight/character/Take hit.png', framesMax: 3 },
-      death: { imageSrc: './img/characters/fantasyKnight/character/Death.png', framesMax: 8 }
+      idle: { imageSrc: './img/characters/fantasyKnight/Idle.png', framesMax: 10 },
+      run: { imageSrc: './img/characters/fantasyKnight/Run.png', framesMax: 8 },
+      jump: { imageSrc: './img/characters/fantasyKnight/Jump.png', framesMax: 3 },
+      fall: { imageSrc: './img/characters/fantasyKnight/Fall.png', framesMax: 3 },
+      attack1: { imageSrc: './img/characters/fantasyKnight/Attack1.png', framesMax: 7 },
+      attack2: { imageSrc: './img/characters/fantasyKnight/Attack3.png', framesMax: 8 },
+      takeHit: { imageSrc: './img/characters/fantasyKnight/Take hit.png', framesMax: 3 },
+      death: { imageSrc: './img/characters/fantasyKnight/Death.png', framesMax: 7 }
     }
   }
 ]
