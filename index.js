@@ -14,7 +14,7 @@ let lastPreviewP2 = -1
 
 const characterMenuBackground = new Sprite({
   position: { x: 0, y: -390 },
-  imageSrc: './img/arena.jpg',
+  imageSrc: './img/maps/arena.jpg',
   scale: 1.5
 })
 
