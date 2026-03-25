@@ -1,0 +1,183 @@
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Press Start 2P', cursive;
+    }
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: black;
+    }
+    .end-match-btn {
+      font-family: inherit;
+      font-size: 12px;
+      padding: 12px 20px;
+      cursor: pointer;
+      background: #1e1b4b;
+      color: white;
+      border: 4px solid white;
+    }
+    #postMatchButtons {
+      display: none;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- red container div -->
+  <div id="gameRoot" style="position: relative; width: 100%; height: 100%">
+    <div
+      id="charSelectUi"
+      style="
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        right: 0;
+        top: 0;
+        padding: 16px;
+        text-align: center;
+        color: white;
+        font-size: 10px;
+        line-height: 1.8;
+        pointer-events: none;
+      "
+    >
+      <div id="selectTitle" style="font-size: 14px; margin-bottom: 8px">
+        CHOOSE YOUR FIGHTER
+      </div>
+      <div id="selectLine1">PLAYER 1 A / D</div>
+      <div id="selectLine2">PLAYER 2 left arrow / right arrow</div>
+      <div id="selectLine3">ENTER to continue</div>
+    </div>
+    <!-- smaller red container div -->
+    <div
+      id="gameHud"
+      style="
+        position: absolute;
+        display: none;
+        width: 100%;
+        padding: 20px;
+      "
+    >
+      <!-- player health -->
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          border-top: 4px solid white;
+          border-left: 4px solid white;
+          border-bottom: 4px solid white;
+        "
+      >
+        <div style="background-color: red; height: 30px; width: 100%"></div>
+        <div
+          id="playerHealth"
+          style="
+            position: absolute;
+            background: #818cf8;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+          "
+        ></div>
+      </div>
+
+      <!-- timer -->
+      <div
+        id="timer"
+        style="
+          background-color: black;
+          width: 100px;
+          height: 50px;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          border: 4px solid white;
+        "
+      >
+        10
+      </div>
+      <!-- enemy health -->
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          border-top: 4px solid white;
+          border-bottom: 4px solid white;
+          border-right: 4px solid white;
+        "
+      >
+        <div style="background-color: red; height: 30px"></div>
+        <div
+          id="enemyHealth"
+          style="
+            position: absolute;
+            background: #818cf8;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+          "
+        ></div>
+      </div>
+      <div></div>
+    </div>
+    <div
+      id="displayText"
+      style="
+        position: absolute;
+        color: white;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 24px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: none;
+      "
+    >
+      <div id="resultMessage">Tie</div>
+      <div id="postMatchButtons">
+        <button type="button" id="resetButton" class="end-match-btn">
+          Reset
+        </button>
+        <button type="button" id="chooseCharButton" class="end-match-btn">
+          Choose character
+        </button>
+      </div>
+    </div>
+    <canvas style="display: block"></canvas>
+  </div>
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+    integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="js/utils.js"></script>
+  <script src="js/classes.js"></script>
+  <script src="js/characters.js"></script>
+  <script src="js/maps.js"></script>
+  <script src="index.js"></script>
+</body>
