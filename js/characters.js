@@ -442,6 +442,35 @@ const CHARACTERS = [
       takeHit: { imageSrc: './img/characters/huntress/character/Take hit.png', framesMax: 3 },
       death: { imageSrc: './img/characters/huntress/character/Death.png', framesMax: 8 }
     }
+  },
+  {
+    id: 'fantasyKnight',
+    name: 'Arthur Pendragon',
+    face_right: true,
+    scale: 2.5,
+    drawOffset: { x: 175, y: 95 },
+    isMelee: true,
+    attackHitFrame: 2,
+    attackBox: { offset: { x: 100, y: 50 }, width: 160, height: 50 },
+    stats: {
+      maxHealth: 105,
+      attackDamage: 22,
+      moveSpeed: 6,
+      jumpStrength: 19,
+      maxJumps: 2,
+      animFramesHold: 5,
+      attackFramesHold: 5
+    },
+    sprites: {
+      idle: { imageSrc: './img/characters/fantasyKnight/character/Idle.png', framesMax: 8 },
+      run: { imageSrc: './img/characters/fantasyKnight/character/Run.png', framesMax: 8 },
+      jump: { imageSrc: './img/characters/fantasyKnight/character/Jump.png', framesMax: 2 },
+      fall: { imageSrc: './img/characters/fantasyKnight/character/Fall.png', framesMax: 2 },
+      attack1: { imageSrc: './img/characters/fantasyKnight/character/Attack1.png', framesMax: 5 },
+      attack2: { imageSrc: './img/characters/fantasyKnight/character/Attack3.png', framesMax: 7 },
+      takeHit: { imageSrc: './img/characters/fantasyKnight/character/Take hit.png', framesMax: 3 },
+      death: { imageSrc: './img/characters/fantasyKnight/character/Death.png', framesMax: 8 }
+    }
   }
 ]
 
