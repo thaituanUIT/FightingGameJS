@@ -47,13 +47,13 @@ const CHARACTERS = [
       height: 50
     },
     stats: {
-      maxHealth: 110,
+      maxHealth: 130,
       attackDamage: 22,
       moveSpeed: 4.5,
       jumpStrength: 18,
       maxJumps: 2,
       animFramesHold: 5,
-      attackFramesHold: 6
+      attackFramesHold: 7
     },
     sprites: {
       idle: {
