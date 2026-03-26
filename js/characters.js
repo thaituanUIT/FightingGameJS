@@ -352,22 +352,10 @@ const CHARACTERS = [
         imageSrc: './img/characters/knight/Fall.png',
         framesMax: 3
       },
-      attack1: {
-        imageSrc: './img/characters/knight/Attack1.png',
-        framesMax: 7
-      },
-      attack2: {
-        imageSrc: './img/characters/knight/Attack2.png',
-        framesMax: 7
-      },
-      takeHit: {
-        imageSrc: './img/characters/knight/Take Hit.png',
-        framesMax: 4
-      },
-      death: {
-        imageSrc: './img/characters/knight/Death.png',
-        framesMax: 11
-      }
+      attack1: { imageSrc: './img/characters/knight/Attack1.png', framesMax: 7 },
+      attack2: { imageSrc: './img/characters/knight/Attack2.png', framesMax: 7 },
+      takeHit: { imageSrc: './img/characters/knight/Take Hit.png', framesMax: 4 },
+      death: { imageSrc: './img/characters/knight/Death.png', framesMax: 11 }
     } 
   },
   {
@@ -476,8 +464,8 @@ const CHARACTERS = [
     id: 'medievalKnight1',
     name: 'The Great Bob',
     face_right: true,
-    scale: 2.5,
-    drawOffset: { x: 175, y: 100 },
+    scale: 1.8,
+    drawOffset: { x: 175, y: 72 },
     isMelee: true,
     attackHitFrame: 2,
     attackBox: { offset: { x: 100, y: 50 }, width: 160, height: 50 },
