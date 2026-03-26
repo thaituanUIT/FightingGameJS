@@ -3,7 +3,7 @@ const MAPS = [
     id: 'oakwoods',
     name: 'Oak Woods',
     background: {
-      imageSrc: './img/maps/background.png'
+      imageSrc: './img/maps/oak-woods.png'
     },
     spawn: {
       left: { x: '14%', y: '44%' },

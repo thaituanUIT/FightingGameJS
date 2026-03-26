@@ -282,6 +282,15 @@ function getCurrentAttackIsMelee(fighter) {
   return fighter.isMelee
 }
 
+function isFighterLocked(fighter) {
+  if (fighter.dead) return true
+  const dying = fighter.image === fighter.sprites.death.image
+  const attacking1 = fighter.sprites.attack1 && fighter.image === fighter.sprites.attack1.image && fighter.framesCurrent < fighter.sprites.attack1.framesMax - 1
+  const attacking2 = fighter.sprites.attack2 && fighter.image === fighter.sprites.attack2.image && fighter.framesCurrent < fighter.sprites.attack2.framesMax - 1
+  const takingHit = fighter.image === fighter.sprites.takeHit.image && fighter.framesCurrent < fighter.sprites.takeHit.framesMax - 1
+  return dying || attacking1 || attacking2 || takingHit
+}
+
 function animateFight() {
   activeMap.draw()
   const playerPrevBottom = player.position.y + player.height
@@ -296,11 +305,12 @@ function animateFight() {
   player.velocity.x = 0
   enemy.velocity.x = 0
 
+  const playerLocked = isFighterLocked(player)
   if (keys.a.pressed && player.lastKey === 'a') {
-    player.velocity.x = -player.moveSpeed
+    if (!playerLocked) player.velocity.x = -player.moveSpeed
     player.switchSprite('run')
   } else if (keys.d.pressed && player.lastKey === 'd') {
-    player.velocity.x = player.moveSpeed
+    if (!playerLocked) player.velocity.x = player.moveSpeed
     player.switchSprite('run')
   } else {
     player.switchSprite('idle')
@@ -312,11 +322,12 @@ function animateFight() {
     player.switchSprite('fall')
   }
 
+  const enemyLocked = isFighterLocked(enemy)
   if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
-    enemy.velocity.x = -enemy.moveSpeed
+    if (!enemyLocked) enemy.velocity.x = -enemy.moveSpeed
     enemy.switchSprite('run')
   } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
-    enemy.velocity.x = enemy.moveSpeed
+    if (!enemyLocked) enemy.velocity.x = enemy.moveSpeed
     enemy.switchSprite('run')
   } else {
     enemy.switchSprite('idle')

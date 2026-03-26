@@ -442,6 +442,64 @@ const CHARACTERS = [
       takeHit: { imageSrc: './img/characters/huntress/character/Take hit.png', framesMax: 3 },
       death: { imageSrc: './img/characters/huntress/character/Death.png', framesMax: 8 }
     }
+  },
+  {
+    id: 'fantasyKnight',
+    name: 'Arthur Pendragon',
+    face_right: true,
+    scale: 2.5,
+    drawOffset: { x: 175, y: 100 },
+    isMelee: true,
+    attackHitFrame: 2,
+    attackBox: { offset: { x: 100, y: 50 }, width: 160, height: 50 },
+    stats: {
+      maxHealth: 105,
+      attackDamage: 22,
+      moveSpeed: 6,
+      jumpStrength: 19,
+      maxJumps: 2,
+      animFramesHold: 5,
+      attackFramesHold: 5
+    },
+    sprites: {
+      idle: { imageSrc: './img/characters/fantasyKnight/Idle.png', framesMax: 10 },
+      run: { imageSrc: './img/characters/fantasyKnight/Run.png', framesMax: 8 },
+      jump: { imageSrc: './img/characters/fantasyKnight/Jump.png', framesMax: 3 },
+      fall: { imageSrc: './img/characters/fantasyKnight/Fall.png', framesMax: 3 },
+      attack1: { imageSrc: './img/characters/fantasyKnight/Attack1.png', framesMax: 7 },
+      attack2: { imageSrc: './img/characters/fantasyKnight/Attack3.png', framesMax: 8 },
+      takeHit: { imageSrc: './img/characters/fantasyKnight/Take hit.png', framesMax: 3 },
+      death: { imageSrc: './img/characters/fantasyKnight/Death.png', framesMax: 7 }
+    }
+  },
+  {
+    id: 'medievalKnight1',
+    name: 'The Great Bob',
+    face_right: true,
+    scale: 2.5,
+    drawOffset: { x: 175, y: 100 },
+    isMelee: true,
+    attackHitFrame: 2,
+    attackBox: { offset: { x: 100, y: 50 }, width: 160, height: 50 },
+    stats: {
+      maxHealth: 105,
+      attackDamage: 22,
+      moveSpeed: 6,
+      jumpStrength: 19,
+      maxJumps: 2,
+      animFramesHold: 5,
+      attackFramesHold: 5
+    },
+    sprites: {
+      idle: { imageSrc: './img/characters/medievalKnight1/Idle.png', framesMax: 6 },
+      run: { imageSrc: './img/characters/medievalKnight1/Run.png', framesMax: 8 },
+      jump: { imageSrc: './img/characters/medievalKnight1/Jump.png', framesMax: 2 },
+      fall: { imageSrc: './img/characters/medievalKnight1/Fall.png', framesMax: 2 },
+      attack1: { imageSrc: './img/characters/medievalKnight1/Attack1.png', framesMax: 4 },
+      attack2: { imageSrc: './img/characters/medievalKnight1/Attack2.png', framesMax: 4 },
+      takeHit: { imageSrc: './img/characters/medievalKnight1/Hit.png', framesMax: 3 },
+      death: { imageSrc: './img/characters/medievalKnight1/Death.png', framesMax: 9 }
+    }
   }
 ]
 
