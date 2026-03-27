@@ -110,19 +110,26 @@ function resizeCanvas() {
 
   canvas.width = gameRoot.clientWidth || window.innerWidth
   canvas.height = gameRoot.clientHeight || window.innerHeight
-  activeMap = buildMapRuntime(activeMapDef, canvas)
+
+  if (activeMap && activeMap.def && activeMap.def.id === activeMapDef.id) {
+    activeMap.resize(canvas)
+  } else {
+    activeMap = new Maps(activeMapDef, canvas)
+  }
+  
   lastPreviewP1 = -1
   lastPreviewP2 = -1
 
   if (player && enemy) {
     const p1xRatio = player.position.x / oldWidth
-    const p1yRatio = player.position.y / oldHeight
+    const p1BottomRatio = (player.position.y + player.height) / oldHeight
     const p2xRatio = enemy.position.x / oldWidth
-    const p2yRatio = enemy.position.y / oldHeight
+    const p2BottomRatio = (enemy.position.y + enemy.height) / oldHeight
+    
     player.position.x = p1xRatio * canvas.width
-    player.position.y = p1yRatio * canvas.height
+    player.position.y = (p1BottomRatio * canvas.height) - player.height
     enemy.position.x = p2xRatio * canvas.width
-    enemy.position.y = p2yRatio * canvas.height
+    enemy.position.y = (p2BottomRatio * canvas.height) - enemy.height
   }
 }
 
@@ -227,7 +234,7 @@ function animateSelect() {
       c.fillRect(0, 0, canvas.width, canvas.height)
     }
   } else {
-    activeMap.draw()
+    activeMap.update()
   }
 
   c.fillStyle = 'rgba(0, 0, 0, 0.55)'
@@ -292,7 +299,7 @@ function isFighterLocked(fighter) {
 }
 
 function animateFight() {
-  activeMap.draw()
+  activeMap.update()
   const playerPrevBottom = player.position.y + player.height
   const enemyPrevBottom = enemy.position.y + enemy.height
   player.update()

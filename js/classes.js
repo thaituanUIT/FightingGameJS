@@ -360,6 +360,123 @@ class Projectile extends Sprite {
   }
 }
 
+class Maps extends Sprite {
+  constructor(mapDef, canvas) {
+    super({
+      position: { x: 0, y: 0 },
+      imageSrc: mapDef.background?.imageSrc || ''
+    })
+
+    this.def = normalizeMapDef(mapDef)
+    this.spawn = { left: { x: 0, y: 0 }, right: { x: 0, y: 0 } }
+    this.walkableSurfaces = []
+    this.mapSprites = []
+
+    this.buildMapSprites()
+    if (canvas) {
+      this.resize(canvas)
+    }
+  }
+
+  buildMapSprites() {
+    this.mapSprites = this.def.sprites
+      .filter((spriteDef) => spriteDef && spriteDef.imageSrc)
+      .map((spriteDef) => {
+        const sprite = new Sprite({
+          position: { x: 0, y: 0 },
+          imageSrc: spriteDef.imageSrc,
+          scale: spriteDef.scale ?? 1,
+          framesMax: spriteDef.framesMax ?? 1,
+          offset: spriteDef.offset || { x: 0, y: 0 },
+          flipX: spriteDef.flipX ?? false,
+          framesHold: spriteDef.framesHold ?? 5,
+          crop: spriteDef.crop || null
+        })
+        return { def: spriteDef, sprite }
+      })
+  }
+
+  resize(canvas) {
+    this.canvas = canvas
+
+    const groundTop = resolveLength(
+      this.def.layout.groundTop,
+      canvas.height,
+      canvas.width,
+      canvas.height
+    )
+    const groundSurface = {
+      type: 'ground',
+      x: 0,
+      y: groundTop,
+      width: canvas.width,
+      height: canvas.height - groundTop
+    }
+    const platforms = this.def.layout.platforms.map((p) => ({
+      type: 'platform',
+      ...scaleRect(p, canvas)
+    }))
+    const spritePlatforms = this.def.sprites
+      .filter((def) => def.type === 'platform')
+      .map((def) => ({
+        type: 'platform',
+        ...scaleRect({
+          x: def.position?.x ?? 0,
+          y: def.position?.y ?? 0,
+          width: def.width ?? 0,
+          height: def.height ?? 0
+        }, canvas)
+      }))
+
+    this.walkableSurfaces = [groundSurface, ...platforms, ...spritePlatforms]
+    this.spawn.left = resolvePoint(this.def.spawn.left, canvas)
+    this.spawn.right = resolvePoint(this.def.spawn.right, canvas)
+  }
+
+  update() {
+    this.drawMap()
+  }
+
+  drawMap() {
+    if (!this.canvas) return
+
+    if (this.image && this.image.complete && this.image.naturalWidth) {
+      const imageWidth = this.image.naturalWidth
+      const imageHeight = this.image.naturalHeight
+      const coverScale = Math.max(
+        this.canvas.width / imageWidth,
+        this.canvas.height / imageHeight
+      )
+      const drawWidth = imageWidth * coverScale
+      const drawHeight = imageHeight * coverScale
+      this.scale = coverScale
+      this.position.x = (this.canvas.width - drawWidth) / 2
+      this.position.y = (this.canvas.height - drawHeight) / 2
+      super.draw()
+      if (this.framesMax > 1 && this.def.background?.animated !== false) {
+        this.animateFrames()
+      }
+    } else {
+      c.fillStyle = 'black'
+      c.fillRect(0, 0, this.canvas.width, this.canvas.height)
+    }
+
+    this.mapSprites.forEach(({ def, sprite }) => {
+      sprite.position = resolvePoint(def.position || { x: 0, y: 0 }, this.canvas)
+      if (def.width !== undefined) {
+        sprite.drawWidth = resolveLength(def.width, this.canvas.width, this.canvas.width, this.canvas.height)
+      }
+      if (def.height !== undefined) {
+        sprite.drawHeight = resolveLength(def.height, this.canvas.height, this.canvas.width, this.canvas.height)
+      }
+      sprite.draw()
+      if (sprite.framesMax > 1 && def.animated !== false) {
+        sprite.animateFrames()
+      }
+    })
+  }
+}
+
 class Items extends Sprite {
   pass
 }
